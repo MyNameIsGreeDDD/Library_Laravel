@@ -14,9 +14,9 @@ class AuthorStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'firstname' => 'required|string|min:2,max:20',
-            'lastname' => 'required|string|min:2,max:20',
-            'patronymic' => 'required|string|min:2,max:20',
+            'firstname' => 'required|string|min:2|max:20',
+            'lastname' => 'required|string|min:2|max:20',
+            'patronymic' => 'required|string|min:2|max:20',
         ];
     }
 
