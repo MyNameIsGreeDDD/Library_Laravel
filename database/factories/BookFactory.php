@@ -24,7 +24,7 @@ class BookFactory extends Factory
     {
         return [
             'title' => Str::random(10),
-            'publication_year' => date('y')
+            'publication_year' => mt_rand(1900,2020)
         ];
     }
 }

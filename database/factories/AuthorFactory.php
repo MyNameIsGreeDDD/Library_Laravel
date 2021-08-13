@@ -25,7 +25,7 @@ class AuthorFactory extends Factory
         return [
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
-            'patronymic' => Str::random(10)
+            'patronymic' =>$this->faker->firstName()
         ];
     }
 }

@@ -113,13 +113,26 @@ class BooksController extends Controller
         return redirect()->route('books.index');
     }
 
-    public function filterByAuthor(Request $request)
+    public function filterByAttribute(Request $request)
     {
-        $author = Author::find($request->only('authorId')['authorId']);
+        $attribute = array_key_first($request->all());
 
-        $books = $author->books()->get();
-        $authors = Author::get();
+        if ($attribute === 'authorId') {
+            $author = Author::find($request->only($attribute)[$attribute]);
 
-        return view('books/index', compact(['books', 'authors']));
+            $books = $author->books()->get();
+            $authors = Author::get();
+
+            return view('books/index', compact(['books', 'authors']));
+        }
+        if ($attribute === 'publication_year') {
+            $books = Book::select()->where($attribute, '=', $request->only($attribute)[$attribute])->get();
+            $authors = Author::get();
+
+            return view('books/index', compact(['books', 'authors']));
+        }
+
+
+        return redirect()->route('books.index');
     }
 }

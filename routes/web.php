@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::resource('books', BooksController::class);
-Route::post('books/filterByAuthor', [BooksController::class, 'filterByAuthor'])->name('books.filter');
+Route::post('books/filterByAttribute', [BooksController::class, 'filterByAttribute'])->name('books.filter');
 Route::resource('authors', AuthorsController::class);
 Route::get('/', function () {
     return view('welcome');
